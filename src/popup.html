@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Robotcorder</title>
+  <link async rel="stylesheet" type="text/css" href="../vendors/jquery-ui.min.css"/>
+  <link async rel="stylesheet" type="text/css" href="../assets/style.css">
+  <script src="../vendors/jquery-3.3.1.min.js"></script>
+  <script src="../vendors/jquery-ui.min.js"></script>
+  <script src="../vendors/clipboard-2.0.0.min.js"></script>
+</head>
+
+<body class="container" tabindex="-1">
+  <div class="padding">
+    <span>
+      <button class="btn btn-wide" id="record" tabindex="-1" title="record user action">
+        record
+      </button>
+
+      <button class="btn btn-wide" id="resume" tabindex="-1" title="resume with the recording">
+        resume
+      </button>
+
+      <button class="btn btn-wide" id="stop" tabindex="-1" title="stop the recording">
+        stop
+      </button>
+
+      <button class="btn btn-wide" id="pause" tabindex="-1" title="pause the recording">
+        pause
+      </button>
+
+      <button class="btn btn-wide" id="save" tabindex="-1" disabled title="upload robot script">
+        upload
+      </button>
+    </span>
+
+    <span class="btn-thin">
+      <button class="btn" id="copy" tabindex="-1" title="copy to clipboard" data-clipboard-target="#textarea-script"></button>
+      <button class="btn" id="settings" tabindex="-1" title="show/hide settings"></button>
+    </span>
+  </div>
+
+  <div id="settings-panel" class="pad hidden">
+    <div class="panel-row">
+      <span>Drag to reorder locators priority</span>
+      <ul id="sortable" class="ui-sortable"/>
+    </div>
+
+    <div class="panel-row">
+      <div>
+        <input type="checkbox" id="demo" />
+        <label for="demo"> Add a 15s sleep after each action (for demo) </label>
+      </div>
+      <div>
+        <input type="checkbox" id="reAction" />
+        <label for="reAction">Repeat the last action in order to turn the page</label>
+        <input id="reActionTimes" size="3" type="number" min="1" max="30" value="1" /> times
+      </div>
+      <div>
+        ETL system account:<input id="userName" />
+      </div>
+      <div>
+        ETL system password:<input id="password" type="password" />
+      </div>
+      <div>
+        Project Name:<input id="projectName" />
+      </div>
+    </div>
+  </div>
+
+  <div class="pad">
+    <textarea id="textarea-script" tabindex="-1" readonly title="steps"></textarea>
+  </div>
+
+  <div class="pad">
+    <textarea class="hidden" id="textarea-log" tabindex="-1" readonly></textarea>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
