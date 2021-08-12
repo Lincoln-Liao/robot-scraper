@@ -5,7 +5,7 @@ function classifier(element) {
   if (tag === 'input') {
     switch (element.type) {
       case 'password':
-        hash = { type: 'text', value: '***' };
+        hash = { type: 'text', value: element.value };
         break;
       case 'radio':
         hash = { type: 'radio', value: element.value };
