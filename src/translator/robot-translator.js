@@ -9,7 +9,8 @@ const map = {
   demo: { keyword: 'Sleep    ${SLEEP}' },
   verify: { keyword: 'Wait Until Page Contains Element' },
   default: { keyword: 'Click Element' },
-  source: {keyword: '${myHtml} =    Get Source'}
+  source: {keyword: '${myHtml} =    Get Source'},
+  focus: {keyword: 'Set Focus To Element'}
 };
 
 const translator = {
@@ -66,6 +67,19 @@ const translator = {
     return url;
   },
 
+  _generateFocus(attr){
+    const type = map[attr.type] || map.default;
+    let path = '';
+    if(attr.type !== 'url'){
+      path += map.focus.keyword;
+
+      path += `    ${attr.path}`;
+      path += attr.value && type.value ? `    ${attr.value}` : '';
+    }
+
+    return path;
+  },
+
   _generatePath(attr) {
     const type = map[attr.type] || map.default;
     let path = type.keyword;
@@ -110,6 +124,12 @@ const translator = {
           //Sleep
           event = this._generateDemo(demo);
           event && events.push(event);
+          //focus
+          event = this._generateFocus(list[i]);
+          event && events.push(event);
+          //Sleep
+          event = this._generateDemo(demo);
+          event && events.push(event);
           //click next page
           event = this._generatePath(list[i]);
           event && events.push(event);
@@ -134,6 +154,10 @@ const translator = {
           event = this._generateVerify(list[i]);
           event && events.push(event);
         }
+        event = this._generateFocus(list[i]);
+        event && events.push(event);
+        event = this._generateDemo(demo);
+        event && events.push(event);
         event = this._generatePath(list[i]);
         event && events.push(event);
         event = this._generateDemo(demo);
