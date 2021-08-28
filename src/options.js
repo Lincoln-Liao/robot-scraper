@@ -5,7 +5,7 @@ const storage = host.storage.local;
 
 function update() {
   const values = document.getElementById('custom-locators').value;
-  const array = values ? values.split(',') : ['for', 'name', 'id', 'title', 'class', 'href'];
+  const array = values ? values.split(',') : ['for', 'name', 'id', 'title', 'class', 'rel', 'href'];
   storage.set({ locators: array });
 }
 

@@ -43,6 +43,7 @@ const locator = {
     if (attr.href != null) return `/${tag}[@href="${attr.href}"]`;
     if (attr.name != null) return `/${tag}[@name="${attr.name}"]`;
     if (attr.id != null) return `/${tag}[@id="${attr.id}"]`;
+    if (attr.rel != null) return `/${tag}[@rel="${attr.rel}"]`;
     if (attr.index != null) return `/${tag}`;
     return '';
   }

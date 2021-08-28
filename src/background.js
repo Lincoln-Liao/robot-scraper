@@ -19,7 +19,7 @@ let password = '';
 let projectName = '';
 
 storage.set({
-  locators: ['for', 'name', 'id', 'title', 'class', 'href'],
+  locators: ['for', 'name', 'id', 'title', 'class', 'rel', 'href'],
   operation: 'stop',
   message: instruction,
   demo: false,

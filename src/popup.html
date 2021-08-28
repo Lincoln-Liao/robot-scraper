@@ -35,7 +35,7 @@
     </span>
 
     <span class="btn-thin">
-      <button class="btn" id="copy" tabindex="-1" title="copy to clipboard" data-clipboard-target="#textarea-script"></button>
+<!--      <button class="btn" id="copy" tabindex="-1" title="copy to clipboard" data-clipboard-target="#textarea-script"></button>-->
       <button class="btn" id="settings" tabindex="-1" title="show/hide settings"></button>
     </span>
   </div>
@@ -48,6 +48,21 @@
 
     <div class="panel-row">
       <div>
+        ETL system account : <input class="ui-widget ui-widget-content ui-corner-all" id="userName" />
+      </div>
+      <br>
+      <div>
+        ETL system password : <input class="ui-widget ui-widget-content ui-corner-all" id="password" type="password" />
+      </div>
+    </div>
+  </div>
+
+  <div class="pad">
+    <div class="panel-row">
+      <div>
+        Project Name : <input class="ui-widget ui-widget-content ui-corner-all" id="projectName" />
+      </div>
+      <div>
         <input type="checkbox" id="demo" />
         <label for="demo"> Add a 15s sleep after each action (for demo) </label>
       </div>
@@ -55,15 +70,6 @@
         <input type="checkbox" id="reAction" />
         <label for="reAction">Repeat the last action in order to turn the page</label>
         <input id="reActionTimes" size="3" type="number" min="1" max="30" value="1" /> times
-      </div>
-      <div>
-        ETL system account:<input id="userName" />
-      </div>
-      <div>
-        ETL system password:<input id="password" type="password" />
-      </div>
-      <div>
-        Project Name:<input id="projectName" />
       </div>
     </div>
   </div>
