@@ -9,8 +9,9 @@ const map = {
   demo: { keyword: 'Sleep    ${SLEEP}' },
   verify: { keyword: 'Wait Until Page Contains Element' },
   default: { keyword: 'Click Element' },
-  source: {keyword: '${myHtml} =    Get Source'},
-  focus: {keyword: 'Set Focus To Element'}
+  source: { keyword: '${myHtml} =    Get Source' },
+  focus: { keyword: 'Set Focus To Element' },
+  windowSize: { keyword: 'Set Window Size   ${3400}   ${600}' },
 };
 
 const translator = {
@@ -90,6 +91,11 @@ const translator = {
     return path;
   },
 
+  _generateWindowSize(attr) {
+    let path = attr.type === 'url' ? map.windowSize.keyword : '';
+    return path;
+  },
+
   _generateDemo(demo) {
     return demo ? map.demo.keyword : '';
   },
@@ -159,6 +165,8 @@ const translator = {
         event = this._generateDemo(demo);
         event && events.push(event);
         event = this._generatePath(list[i]);
+        event && events.push(event);
+        event = this._generateWindowSize(list[i]);
         event && events.push(event);
         event = this._generateDemo(demo);
         event && events.push(event);
