@@ -13,7 +13,9 @@ let recordTab = 0;
 let demo = false;
 let verify = false;
 let reAction = false;
+let reScroll = false;
 let reActionTimes = 1;
+let reScrollTimes = 1;
 let userName = '';
 let password = '';
 let projectName = '';
@@ -27,7 +29,9 @@ storage.set({
   canSave: false,
   isBusy: false,
   reAction: false,
+  reScroll: false,
   reActionTimes: 1,
+  reScrollTimes: 1,
   userName: '',
   password: '',
   projectName: ''
@@ -95,7 +99,7 @@ host.runtime.onMessage.addListener((request, sender, sendResponse) => {
     recordTab = 0;
     icon.setIcon({ path: logo[operation] });
 
-    script = translator.generateOutput(list, maxLength, demo, verify, reAction, reActionTimes);
+    script = translator.generateOutput(list, maxLength, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes);
     content.query(tab, (tabs) => {
       content.sendMessage(tabs[0].id, { operation: 'stop' });
     });
@@ -104,7 +108,7 @@ host.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (operation === 'save') {
 
     const projectUrl = translator.generateUrl(list);
-    const file = translator.generateFile(list, maxLength, demo, verify, reAction, reActionTimes);
+    const file = translator.generateFile(list, maxLength, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes);
     jQuery.ajax({
       url: "http://140.115.54.44:8001/api/robot/upload",//http://missionbackend:8888/ETL_post
       type: "POST",
@@ -144,9 +148,9 @@ host.runtime.onMessage.addListener((request, sender, sendResponse) => {
       filename
     });
   } else if (operation === 'settings') {
-    ({ demo, verify, reAction, reActionTimes, userName, password, projectName } = request);
+    ({ demo, verify, reAction, reScroll, reActionTimes, reScrollTimes, userName, password, projectName } = request);
 
-    storage.set({ locators: request.locators, demo, verify, reAction, reActionTimes, userName, password, projectName });
+    storage.set({ locators: request.locators, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes, userName, password, projectName });
   } else if (operation === 'load') {
     storage.get({ operation: 'stop', locators: [] }, (state) => {
       content.sendMessage(sender.tab.id, { operation: state.operation, locators: state.locators });
@@ -161,7 +165,7 @@ host.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.scripts) {
       icon.setIcon({ path: logo.stop });
       list = list.concat(request.scripts);
-      script = translator.generateOutput(list, maxLength, demo, verify, reAction, reActionTimes);
+      script = translator.generateOutput(list, maxLength, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes);
 
       storage.set({ message: script, operation: 'stop', isBusy: false });
     }

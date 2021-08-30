@@ -114,8 +114,10 @@ function toggle(e) {
     document.getElementById('save').disabled = false;
   }
   if (e.demo) { document.getElementById('demo').checked = e.demo; }
-  if (e.reAction) { document.getElementById('reAction').checked = e.reAction; }
-  if (e.reAction) { document.getElementById('reActionTimes').value = e.reActionTimes; }
+  if (e.reAction) { document.getElementById('reAction').checked = e.reAction;}
+  if (e.reScroll) { document.getElementById('reScroll').checked = e.reScroll;}
+  if (e.reActionTimes) { document.getElementById('reActionTimes').value = e.reActionTimes; }
+  if (e.reScrollTimes) { document.getElementById('reScrollTimes').value = e.reScrollTimes; }
   if (typeof e.userName !== "undefined") { document.getElementById('userName').value = e.userName; }
   if (typeof e.password !== "undefined") { document.getElementById('password').value = e.password; }
   if (typeof e.projectName !== "undefined") { document.getElementById('projectName').value = e.projectName; }
@@ -138,16 +140,28 @@ function operation(e) {
 }
 
 function settings(e) {
+  if(e.target.id == 'reAction'){
+    if(e.target.checked){
+      document.getElementById('reScroll').checked = false;
+    }
+  }
+  if(e.target.id == 'reScroll'){
+    if(e.target.checked){
+      document.getElementById('reAction').checked = false;
+    }
+  }
+  const reAction = document.getElementById('reAction').checked;
+  const reScroll = document.getElementById('reScroll').checked;
   const locators = $('#sortable').sortable('toArray', { attribute: 'id' });
   const demo = document.getElementById('demo').checked;
   const verify = true;
-  const reAction = document.getElementById('reAction').checked;
   const reActionTimes = document.getElementById('reActionTimes').value;
+  const reScrollTimes = document.getElementById('reScrollTimes').value;
   const userName = document.getElementById('userName').value;
   const password = document.getElementById('password').value;
   const projectName = document.getElementById('projectName').value;
   host.runtime.sendMessage({
-    operation: 'settings', locators, demo, verify, reAction, reActionTimes, userName, password, projectName
+    operation: 'settings', locators, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes, userName, password, projectName
   });
   analytics(['_trackEvent', 'setting', e.target.id]);
 }
@@ -162,7 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     demo: false,
     verify: true,
     reAction: false,
+    reScroll: false,
     reActionTimes:1,
+    reScrollTimes:1,
     userName:'',
     password:'',
     projectName:'',
@@ -176,7 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
       demo: state.demo,
       verify: true,
       reAction: state.reAction,
+      reScroll: state.reScroll,
       reActionTimes: state.reActionTimes,
+      reScrollTimes: state.reScrollTimes,
       userName: state.userName,
       password: state.password,
       projectName: state.projectName
@@ -199,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(id).addEventListener('click', operation);
   });
 
-  ['demo','reAction','reActionTimes','userName','password','projectName'].forEach((id) => {
+  ['demo','reAction','reScroll','reActionTimes','reScrollTimes','userName','password','projectName'].forEach((id) => {
     document.getElementById(id).addEventListener('change', settings);
   });
 

@@ -41,7 +41,7 @@
   </div>
 
   <div id="settings-panel" class="pad hidden">
-    <div class="panel-row">
+    <div class="panel-row hidden">
       <span>Drag to reorder locators priority</span>
       <ul id="sortable" class="ui-sortable"/>
     </div>
@@ -67,15 +67,20 @@
         <label for="demo"> Add a 15s sleep after each action (for demo) </label>
       </div>
       <div>
-        <input type="checkbox" id="reAction" />
+        <input type="checkbox" class="checkbox2" id="reAction" />
         <label for="reAction">Repeat the last action in order to turn the page</label>
-        <input id="reActionTimes" size="3" type="number" min="1" max="30" value="1" /> times
+        <input id="reActionTimes" size="3" type="number" min="1" max="29" value="1" /> times
+      </div>
+      <div>
+        <input type="checkbox" class="checkbox2" id="reScroll" />
+        <label for="reScroll">Repeat to scroll this page to the end</label>
+        <input id="reScrollTimes" size="3" type="number" min="1" max="29" value="1" /> times
       </div>
     </div>
   </div>
 
   <div class="pad">
-    <textarea id="textarea-script" tabindex="-1" readonly title="steps"></textarea>
+    <textarea id="textarea-script" class="hidden" tabindex="-1" readonly title="steps"></textarea>
   </div>
 
   <div class="pad">

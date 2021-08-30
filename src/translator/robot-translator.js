@@ -15,14 +15,14 @@ const map = {
 };
 
 const translator = {
-  generateOutput(list, length, demo, verify, reAction, reActionTimes) {
-    const events = this._generateEvents(list, length, demo, verify, reAction, reActionTimes);
+  generateOutput(list, length, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes) {
+    const events = this._generateEvents(list, length, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes);
 
     return events.join('\n');
   },
 
-  generateFile(list, length, demo, verify, reAction, reActionTimes) {
-    let events = this._generateEvents(list, length, demo, verify, reAction, reActionTimes);
+  generateFile(list, length, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes) {
+    let events = this._generateEvents(list, length, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes);
 
     events = events.reduce((a, b) => `${a}    ${b}\n`, '');
 
@@ -112,11 +112,15 @@ const translator = {
     return 'Create File  ' + page.toString().padStart(4, '0') + '.html  ${myHtml}';
   },
 
-  _generateEvents(list, length, demo, verify, reAction, reActionTimes) {
+  _generateScrollDown(times) {
+    return 'Execute Javascript     var q=document.documentElement.scrollTop=' + times*3000;
+  },
+
+  _generateEvents(list, length, demo, verify, reAction, reScroll, reActionTimes, reScrollTimes) {
     let event = null;
     const events = [];
     for (let i = 0; i < list.length && i < length; i++) {
-      if(reAction && i === list.length-1){
+      if(reAction && i === list.length-1){//重複點擊下一頁流程
         for(let r = 1; r <= reActionTimes ; r++){
           //Get Source
           event = this._generateSource();
@@ -151,6 +155,41 @@ const translator = {
         event && events.push(event);
         //Create File
         event = this._generateCreatFile(parseInt(reActionTimes)+1);
+        event && events.push(event);
+        //Sleep
+        event = this._generateDemo(demo);
+        event && events.push(event);
+      }else if(reScroll && i === list.length-1){//重複捲動至底流程
+        if(list.length == 1){
+          event = this._generatePath(list[i]);
+          event && events.push(event);
+          event = this._generateWindowSize(list[i]);
+          event && events.push(event);
+          event = this._generateDemo(demo);
+          event && events.push(event);
+        }else{
+          event = this._generatePath(list[i]);
+          event && events.push(event);
+          event = this._generateDemo(demo);
+          event && events.push(event);
+        }
+
+        for(let r = 1; r <= reScrollTimes ; r++){
+          //Scroll Down
+          event = this._generateScrollDown(r);
+          event && events.push(event);
+          //Sleep
+          event = this._generateDemo(demo);
+          event && events.push(event);
+        }
+        //Get Source
+        event = this._generateSource();
+        event && events.push(event);
+        //Sleep
+        event = this._generateDemo(demo);
+        event && events.push(event);
+        //Create File
+        event = this._generateCreatFile(1);
         event && events.push(event);
         //Sleep
         event = this._generateDemo(demo);

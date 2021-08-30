@@ -100,6 +100,7 @@ html {
 }
 
 .container {
+    /*height: 200px;*/
     min-width: 500px;
     text-align: left;
 }
@@ -263,3 +264,31 @@ button.copy-ok:hover {
     border: 1px solid #474747;
 }
 
+
+.checkbox2 {
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 15px;
+    height: 12px;
+    position: relative;
+}
+
+.checkbox2:after {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 0;
+    content: " ";
+    background-color: #ff0000;
+    color: #fff;
+    display: inline-block;
+    visibility: visible;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.checkbox2:checked:after {
+    content: "✓";
+    font-size: 12px;
+}
