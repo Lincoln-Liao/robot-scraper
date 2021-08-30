@@ -37,12 +37,14 @@ const locator = {
   },
 
   _getSubpath(subpath, attr, tag) {
+    const pattern = /.[0-9]{10}./;
+    if (attr.id != null && pattern.test(attr.id)) return `/${tag}`;
     if (attr.for != null) return `/${tag}[@for="${attr.for}"]`;
     if ((attr.class != null) && (attr.class.length > 0)) return `/${tag}[@class="${attr.class}"]`;
     if (attr.title != null) return `/${tag}[@title="${attr.title}"]`;
     if (attr.href != null) return `/${tag}[@href="${attr.href}"]`;
     if (attr.name != null) return `/${tag}[@name="${attr.name}"]`;
-    if (attr.id != null) return `/${tag}[@id="${attr.id}"]`;
+    if (attr.id != null && !pattern.test(attr.id)) return `/${tag}[@id="${attr.id}"]`;
     if (attr.rel != null) return `/${tag}[@rel="${attr.rel}"]`;
     if (attr.index != null) return `/${tag}`;
     return '';
