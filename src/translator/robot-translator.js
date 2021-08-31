@@ -44,6 +44,7 @@ const translator = {
       + '\n    Call Method    ${chrome_options}    add_argument    --headless'
       + '\n    Call Method    ${chrome_options}    add_argument    --disable-gpu'
       + '\n    Call Method    ${chrome_options}    add_argument    --no-sandbox'
+      + '\n    Call Method    ${chrome_options}    add_argument    --user-agent\\=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36 System/ComputerId'
       + `\n${events}`
       + '\n    Close Browser';
   },
