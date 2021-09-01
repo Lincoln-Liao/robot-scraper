@@ -1,0 +1,38 @@
+{
+  "record": {
+    "message": "record"
+  },
+  "resume": {
+    "message": "resume"
+  },
+  "stop": {
+    "message": "stop"
+  },
+  "pause": {
+    "message": "pause"
+  },
+  "upload": {
+    "message": "upload"
+  },
+  "ETLSystemAccount": {
+    "message": "ETL system account"
+  },
+  "ETLSystemPassword": {
+    "message": "ETL system password"
+  },
+  "ProjectNameMessage": {
+    "message": "Project Name"
+  },
+  "reActionMessage": {
+    "message": "Repeat the last action in order to turn the page"
+  },
+  "times": {
+    "message": "times"
+  },
+  "reScrollMessage": {
+    "message": "Repeat to scroll this page to the end"
+  },
+  "times2": {
+    "message": "times"
+  }
+}

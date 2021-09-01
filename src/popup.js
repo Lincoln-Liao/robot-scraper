@@ -166,6 +166,22 @@ function settings(e) {
   analytics(['_trackEvent', 'setting', e.target.id]);
 }
 
+function loadLanguage(){
+  analytics(['_trackEvent', 'setting', chrome.i18n.getUILanguage()]);
+  document.getElementById('record').innerHTML = chrome.i18n.getMessage('record');
+  document.getElementById('resume').innerHTML = chrome.i18n.getMessage('resume');
+  document.getElementById('stop').innerHTML = chrome.i18n.getMessage('stop');
+  document.getElementById('pause').innerHTML = chrome.i18n.getMessage('pause');
+  document.getElementById('save').innerHTML = chrome.i18n.getMessage('upload');
+  document.getElementById('ETLSystemAccount').innerHTML = chrome.i18n.getMessage('ETLSystemAccount');
+  document.getElementById('ETLSystemPassword').innerHTML = chrome.i18n.getMessage('ETLSystemPassword');
+  document.getElementById('ProjectNameMessage').innerHTML = chrome.i18n.getMessage('ProjectNameMessage');
+  document.getElementById('reActionMessage').innerHTML = chrome.i18n.getMessage('reActionMessage');
+  document.getElementById('times').innerHTML = chrome.i18n.getMessage('times');
+  document.getElementById('reScrollMessage').innerHTML = chrome.i18n.getMessage('reScrollMessage');
+  document.getElementById('times2').innerHTML = chrome.i18n.getMessage('times2');
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   storage.get({
@@ -233,3 +249,5 @@ host.storage.onChanged.addListener((changes, _) => {
     if (key === 'message') display({ message: changes.message.newValue });
   }
 });
+
+window.addEventListener('load', loadLanguage);

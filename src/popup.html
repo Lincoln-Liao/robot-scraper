@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Robotcorder</title>
+  <title>ETLRobot</title>
   <link async rel="stylesheet" type="text/css" href="../vendors/jquery-ui.min.css"/>
   <link async rel="stylesheet" type="text/css" href="../assets/style.css">
   <script src="../vendors/jquery-3.3.1.min.js"></script>
@@ -48,11 +48,11 @@
 
     <div class="panel-row">
       <div>
-        ETL system account : <input class="ui-widget ui-widget-content ui-corner-all" id="userName" />
+        <font id="ETLSystemAccount">ETL system account</font> : <input class="ui-widget ui-widget-content ui-corner-all" id="userName" />
       </div>
       <br>
       <div>
-        ETL system password : <input class="ui-widget ui-widget-content ui-corner-all" id="password" type="password" />
+        <font id="ETLSystemPassword">ETL system password</font> : <input class="ui-widget ui-widget-content ui-corner-all" id="password" type="password" />
       </div>
     </div>
   </div>
@@ -60,27 +60,27 @@
   <div class="pad">
     <div class="panel-row">
       <div>
-        Project Name : <input class="ui-widget ui-widget-content ui-corner-all" id="projectName" />
+        <font id="ProjectNameMessage">Project Name</font> : <input class="ui-widget ui-widget-content ui-corner-all" id="projectName" />
       </div>
       <div class="hidden">
         <input type="checkbox" id="demo" />
-        <label for="demo"> Add a 15s sleep after each action (for demo) </label>
+        <label for="demo"> Add a 15s sleep after each action </label>
       </div>
       <div>
         <input type="checkbox" class="checkbox2" id="reAction" />
-        <label for="reAction">Repeat the last action in order to turn the page</label>
-        <input id="reActionTimes" size="3" type="number" min="1" max="29" value="1" /> times
+        <label for="reAction" id="reActionMessage">Repeat the last action in order to turn the page</label>
+        <input id="reActionTimes" size="3" type="number" min="1" max="29" value="1" /> <font id="times">times</font>
       </div>
       <div>
         <input type="checkbox" class="checkbox2" id="reScroll" />
-        <label for="reScroll">Repeat to scroll this page to the end</label>
-        <input id="reScrollTimes" size="3" type="number" min="1" max="29" value="1" /> times
+        <label for="reScroll" id="reScrollMessage">Repeat to scroll this page to the end</label>
+        <input id="reScrollTimes" size="3" type="number" min="1" max="29" value="1" /> <font id="times2">times</font>
       </div>
     </div>
   </div>
 
   <div class="pad">
-    <textarea id="textarea-script" class="" tabindex="-1" readonly title="steps"></textarea>
+    <textarea id="textarea-script" class="hidden" tabindex="-1" readonly title="steps"></textarea>
   </div>
 
   <div class="pad">

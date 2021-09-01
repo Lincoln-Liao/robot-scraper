@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "ETLRobot",
   "version": "0.4.0",
+  "default_locale": "en",
   "homepage_url": "https://github.com/sohwendy/Robotcorder",
   "description": "A Robot that records user action and scans the page to generate RobotFramework test scripts (beta)",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",

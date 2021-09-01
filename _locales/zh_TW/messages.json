@@ -1,0 +1,38 @@
+{
+  "record": {
+    "message": "錄製"
+  },
+  "resume": {
+    "message": "繼續"
+  },
+  "stop": {
+    "message": "結束"
+  },
+  "pause": {
+    "message": "暫停"
+  },
+  "upload": {
+    "message": "上傳"
+  },
+  "ETLSystemAccount": {
+    "message": "ETL system 帳號"
+  },
+  "ETLSystemPassword": {
+    "message": "ETL system 密碼"
+  },
+  "ProjectNameMessage": {
+    "message": "腳本名稱"
+  },
+  "reActionMessage": {
+    "message": "重複最後一次點擊(下一頁)"
+  },
+  "times": {
+    "message": "次"
+  },
+  "reScrollMessage": {
+    "message": "重複捲動至頁面最底"
+  },
+  "times2": {
+    "message": "次"
+  }
+}
