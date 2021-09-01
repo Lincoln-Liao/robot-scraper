@@ -10,7 +10,7 @@ const content = host.tabs;
 const icon = host.browserAction;
 const maxLength = 5000;
 let recordTab = 0;
-let demo = false;
+let demo = true;
 let verify = false;
 let reAction = false;
 let reScroll = false;
@@ -24,7 +24,7 @@ storage.set({
   locators: ['for', 'name', 'id', 'title', 'class', 'rel', 'href'],
   operation: 'stop',
   message: instruction,
-  demo: false,
+  demo: true,
   verify: false,
   canSave: false,
   isBusy: false,

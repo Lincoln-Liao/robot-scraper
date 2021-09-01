@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     operation: 'stop',
     canSave: false,
     isBusy: false,
-    demo: false,
+    demo: true,
     verify: true,
     reAction: false,
     reScroll: false,
