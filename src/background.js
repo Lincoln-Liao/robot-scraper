@@ -143,10 +143,10 @@ host.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     const blob = new Blob([file], { type: 'text/plain;charset=utf-8' });
 
-    host.downloads.download({
-      url: URL.createObjectURL(blob, { oneTimeOnly: true }),
-      filename
-    });
+    // host.downloads.download({
+    //   url: URL.createObjectURL(blob, { oneTimeOnly: true }),
+    //   filename
+    // });
   } else if (operation === 'settings') {
     ({ demo, verify, reAction, reScroll, reActionTimes, reScrollTimes, userName, password, projectName } = request);
 
