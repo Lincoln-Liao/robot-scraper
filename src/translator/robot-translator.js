@@ -76,7 +76,6 @@ const translator = {
       path += map.focus.keyword;
 
       path += `    ${attr.path}`;
-      path += attr.value && type.value ? `    ${attr.value}` : '';
     }
 
     return path;
