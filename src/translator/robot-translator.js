@@ -27,7 +27,7 @@ const translator = {
     events = events.reduce((a, b) => `${a}    ${b}\n`, '');
 
     return '*** Settings ***'
-      + `\nDocumentation     A test suite with a single test for ${list[0].title}`
+      + `\nDocumentation     A test suite with a single test for Web scraping`
       + "\n...               Created by hats' Robotcorder"
       + '\nLibrary           Selenium2Library    timeout=10'
       + '\nLibrary           OperatingSystem'
@@ -37,7 +37,7 @@ const translator = {
       + '\n${SLEEP}    15'
       + '\n${CHROMEDRIVER_PATH}    /usr/bin/chromedriver'
       + '\n\n*** Test Cases ***'
-      + `\n${list[0].title} test`
+      + `\n Web scraping test`
       + '\n    ${chrome_options}=    Evaluate    sys.modules[\'selenium.webdriver\'].ChromeOptions()  sys, selenium.webdriver'
       + '\n    Call Method    ${chrome_options}    add_argument    test-type'
       + '\n    Call Method    ${chrome_options}    add_argument    --disable-extensions'
